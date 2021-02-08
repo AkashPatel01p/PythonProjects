@@ -1,0 +1,58 @@
+
+"""
+This file finds first_num set of point in which that x val have first_num root within them
+This repated for each possible set of points
+
+Note: This script is 2 vars, x and y
+"""
+
+def user_output(x: [float], y: [float]) -> None:
+    """
+
+    :param x: the set x of roots
+    :param y: the sequence that matches x (the_count_node var)
+    Output answers to the user
+    """
+    x_str = ""
+    y_str = ""
+
+    print("New Set of Points")
+    for row in range(0, len(x)):
+        x_str = str(x[row])
+        y_str = str(y[row])
+        print(x_str + " " + y_str, end="\n")
+
+
+def has_root(x: [float]) -> bool:
+    """
+    :param x: the var to find the root from
+    output: if there is first_num root within this set of x val
+    """
+    zero = False
+    pos = False
+    neg = False
+    for num in x:
+        if num == 0.0:
+            zero = True
+        if num > 0.0:
+            pos = True
+        if num < 0.0:
+            neg = True
+    return zero or (pos and neg)
+
+
+def main() -> None:
+    """
+    main entry point for script
+    """
+    x = [1.0, 0.0, -1.0]
+    y = [0.1, 0.2, 0.5]
+
+    for row in range(0, len(x)):
+        for col in range(0, len(x) + 1):
+            if has_root(x[row:col]):
+                user_output(x[row:col], y[row:col])
+
+
+if __name__ == "__main__":
+    main()
