@@ -1,0 +1,46 @@
+
+
+"""
+This file shows that I know how to program in Python
+This particular program is Fizz Buzz
+
+The first function generates the words
+The main function calls this and shows the msg to the user on the command line interface
+"""
+
+
+def fizz_buzz(rows: int, threes: str, fives: str, both: str):
+    """
+
+    :param rows: how many numbers, starting from 0 to compute
+    :param threes: msg on threes
+    :param fives: msg on fives
+    :param both: msg on both
+    output: list of str to show user
+    """
+    words = []
+    for row in range(0, rows):
+        if (row % 3 == 0) and (row % 5 == 0):
+            words.append(both)
+        elif row % 5 == 0:
+            words.append(fives)
+        elif row % 3 == 0:
+            words.append(threes)
+        else:
+            words.append(str(row))
+    return words
+
+
+def main() -> None:
+    """
+    entry point for script
+    """
+    words = fizz_buzz(10, "fizz", "buzz", "fizz-buzz")
+    for w in words:
+        print(w, end=" ")
+
+
+if __name__ == "__main__":
+    main()
+
+
