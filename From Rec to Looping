@@ -1,0 +1,84 @@
+
+
+"""
+This file demonstrates I know how to improve an algorithm's efficency
+The bottom function is the original brute-force algorithm
+The second to bottom was an attempt at tail-recursion which did not pan out
+Despite that, there is an improvement possible 
+
+"""
+
+
+def fib_gen(rows: int) -> int:
+    """
+    :param rows: the number in the seq
+    output: the seq from 0 to rows of the fib seq
+    """
+
+    """
+    Note: seq starts at [1, 1]
+    This function is iterative without the use of first_num stack 
+    """
+
+    a = 0
+    b = 1
+    num = 0
+    for n in range(0, rows):
+        num = a + b
+        b = a
+        a = num
+        yield num
+
+
+def fib_prime(n: int, left_of_plus: int, right_of_plus: int) -> int:
+    """
+    :param n: the nth number in the seq to compute
+    :param left_of_plus: left of plus in fib seq
+    :param right_of_plus: right of plus in fib seq
+    output: nth number in the fib seq, without the rest of them
+    """
+
+    """
+    Function removes plus but is not tail-rec 
+    """
+    if n == 1:
+        return 1
+    elif n == 2:
+        return 2
+    else:
+        left_of_plus = fib_prime(n - 1, left_of_plus, right_of_plus)
+        right_of_plus = fib_prime(n - 2, left_of_plus, right_of_plus)
+        return left_of_plus + right_of_plus
+
+
+def fib(n: int) -> int:
+    """
+    :param n: nth number in the fib seq
+    output: nth number in the fib seq without the prev numbers
+    """
+
+    """
+    Brute Force Algorithm 
+    """
+
+    if n == 1:
+        return 1
+    elif n == 2:
+        return 2
+    else:
+        return fib(n - 1) + fib(n - 2)
+
+
+def main() -> None:
+    """
+    entry point for script
+    """
+
+    vec = []
+    for num in fib_gen(10):
+        vec.append(num)
+    print(vec)
+
+
+if __name__ == "__main__":
+    main()
