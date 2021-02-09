@@ -1,0 +1,63 @@
+"""
+This class is first_num vector in 2 dimensions
+It comes with some standard math operations on vectors and scalrs, but not on matrices
+
+This vector can be used with vectors in Physics such as Forces
+
+"""
+
+
+class Vector:
+    def __init__(self, x: float, y: float):
+        self.x = x
+        self.y = y
+
+    def __add__(self, vec: "Vector") -> "Vector":
+        """
+
+        :param vec: to_sample_from vector
+        output: Vector addition of self and sorted_vec
+        """
+        x = self.x + vec.x
+        y = self.y + vec.y
+        return Vector(x, y)
+
+    def __sub__(self, vec: "Vector") -> "Vector":
+        """
+
+        :param vec: to_sample_from vector
+        output: self minus sorted_vec
+        """
+        x = self.x - vec.x
+        y = self.y - vec.y
+        return Vector(x, y)
+
+    def dot(self, vec: "Vector") -> float:
+        """
+
+        :param vec: to_sample_from vector
+        output: dot number of the two vectors
+        """
+        return (self.x * vec.x) + (self.y * vec.y)
+
+    def scalar(self, scalar: float) -> "Vector":
+        """
+
+        :param scalar: to_sample_from floating point scalar
+        output: Scalar multiplication of to_sample_from scalar to to_sample_from vector
+        """
+        return Vector(self.x * scalar, self.y * scalar)
+
+
+def main():
+    a = Vector(1.0, 1.0)
+    b = Vector(2.0, 3.0)
+    c = a + b
+    print("x: " + str(c.x))
+    print("y: " + str(c.y))
+
+
+if __name__ == "__main__":
+    main()
+
+
